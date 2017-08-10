@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Links</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<% if logged_in? %>
+  <%= current_user.username %>
+  <button type="button" name="<%=session_url%>" method="DELETE">Sign Out</button>
+<% else %>
+  <a href="<%=new_session_url%>">Log In</a>
+  <a href="<%=new_user_url%>">Sign In</a>
+<%end%>
+
+<% if flash[:errors] %>
+  <%= flash[:errors].join("<br>").html_safe %>
+<% end %>
+
+<%= yield %>
+
+</body>
+</html>

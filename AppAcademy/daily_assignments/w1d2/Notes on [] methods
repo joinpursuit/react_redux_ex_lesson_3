@@ -1,0 +1,10 @@
+def [](pos) ## pos = [num, num2]
+  x, y = pos
+  self.grid[x][y]
+end
+
+def []= (pos, value)
+  self[pos] = v
+end
+
+  self[[1, 2]] = :X

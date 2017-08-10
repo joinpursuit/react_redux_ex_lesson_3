@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Links</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+  <% if logged_in? %>
+    <%= current_user.username %>
+    <form action="<%=session_url%>" method="post">
+      <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+      <input type="hidden" name="_method" value="delete">
+
+      <input type="submit" value="Sign Out">
+    </form>
+  <% else %>
+    <a href="<%=new_user_url%>">Sign Up</a>
+    <a href="<%=new_session_url%>">Sign In</a>
+  <% end %>
+
+  <% if flash[:errors] %>
+    <% flash[:errors].each do |error| %>
+      <%=error%>
+      <br>
+    <% end %>
+  <% end %>
+
+
+<%= yield %>
+
+</body>
+</html>

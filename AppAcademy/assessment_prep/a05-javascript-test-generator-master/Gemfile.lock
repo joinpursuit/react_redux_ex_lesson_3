@@ -1,0 +1,25 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    byebug (9.0.6)
+    colorize (0.8.1)
+    jasmine (2.7.0)
+      jasmine-core (>= 2.7.0, < 3.0.0)
+      phantomjs
+      rack (>= 1.2.1)
+      rake
+    jasmine-core (2.7.0)
+    phantomjs (2.1.1.0)
+    rack (2.0.3)
+    rake (12.0.0)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  byebug
+  colorize
+  jasmine
+
+BUNDLED WITH
+   1.15.3

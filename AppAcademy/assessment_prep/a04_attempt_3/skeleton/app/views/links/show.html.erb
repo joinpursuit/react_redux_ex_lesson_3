@@ -1,0 +1,30 @@
+<h1>Show Link</h1>
+
+<h2><%=@link.user.username%></h2>
+<h2><%=@link.title%></h2>
+<h2><%=@link.url%></h2>
+
+<h2>Comments</h2>
+<% @link.comments.each do |comment| %>
+  <%= comment.body %>
+  <form action="<%=comment_url(comment)%>" method="post">
+    <%= auth_token_input %>
+    <input type="hidden" name="_method" value="delete">
+    <input type="submit" value="Remove Comment">
+  </form>
+<%end%>
+
+<h2>Add Comment</h2>
+<form action="<%=comments_url%>" method="post">
+  <%= auth_token_input %>
+
+  <input type="hidden" name="comment[link_id]" value="<%= @link.id %>">
+
+  <label for="Comment">Comment</label>
+  <textarea id="Comment" name="comment[body]" rows="8" cols="80"></textarea>
+
+  <input type="submit" value="Add Comment">
+</form>
+
+<a href="<%=links_url%>">Links</a>
+<a href="<%=edit_link_url(@link)%>">Edit Link</a>
